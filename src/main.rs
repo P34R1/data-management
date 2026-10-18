@@ -48,7 +48,7 @@ fn main() -> ! {
         print!("{:0>2}%  k = {:<6}", k*100/length, k);
 
         let start = Instant::now();
-        while start.elapsed() < Duration::from_millis(5000) {}
+        while start.elapsed() < Duration::from_millis(7000) {}
 
         let t = Instant::now();
         led.set_high();
