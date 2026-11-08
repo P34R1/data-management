@@ -34,12 +34,12 @@ fn main() -> ! {
 
     // IGNORE EVERYTHING ABOVE THIS LINE. It's just setup that I'm too lazy to comment. The "meat" of the program is below.
 
-    let length = 15000; // the length of the data
+    let length = 15000; // the length of the list
 
-    let mut sorted: Vec<u32> = (0..length).map(|_| rng.random()).collect(); // makes random data on each run
+    let mut sorted: Vec<u32> = (0..length).map(|_| rng.random()).collect(); // makes random data once when the program starts. The numbers are reused for each sort.
     bubble(sorted.as_mut_slice()); // makes the original data set fully sorted (to be unsorted and resorted)
 
-    loop { // the loop means everything from here to line 57 keeps repeating forever (or in reality until the device looses power)
+    loop { // the loop means everything from here to line 56 keeps repeating forever (or in reality until the device looses power)
         let k = rng.random() % length; // this is the "k" value. k is a positive whole number from 0 to length (15000)
         let mut list = unsort(sorted.as_slice(), k as usize); // this copies the list but with the last k elements reversed
 
@@ -53,7 +53,7 @@ fn main() -> ! {
         bubble(list.as_mut_slice()); // this sorts the list.
         led.set_low(); // this turns the LED off. I stopped my stopwatch when the LED turned off.
         println!("|");
-    } // line 57 is down here. once the program hits this line, it goes back up to the loop line and repeats by sorting a list with a different random "sortedness"
+    } // line 56 is down here. once the program hits this line, it goes back up to the loop line and repeats by sorting a list with a different random "sortedness"
 }
 
 // This function returns a copy of "arr" with the last "n" elements in reverse order.
